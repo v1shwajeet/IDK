@@ -37,7 +37,7 @@ export const appRouter = router({
         userId
       }
     })
-  })
+  }),
 
   deleteFile: privateProcedure
     .input(z.object({ id: z.string() }))

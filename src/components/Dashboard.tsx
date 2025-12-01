@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   const {data: files, isLoading} = trpc.getUserFiles.useQuery()
 
-  const { mutate } = trpc.deleteFile.useMutation()
+  const { mutate: deleteFile } = trpc.deleteFile.useMutation()
 
   return (
     <main className='mx-auto max-w-7xl md:p-10'>
@@ -31,11 +31,11 @@ const Dashboard = () => {
       <ul className='mt-8 grid grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3'>
       {files
         .sort(
-          (a, b) =>
+          (a:any, b:any) =>
             new Date(b.createdAt).getTime() -
             new Date(a.createdAt).getTime()
         )
-        .map((file) => (
+        .map((file:any) => (
           <li
             key={file.id}
             className='col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow transition hover:shadow-lg'>
@@ -76,9 +76,9 @@ const Dashboard = () => {
                 className='w-full'
                 variant='destructive'>
                 <Trash className='h-4 w-4' />
-                {currentlyDeletingFile === file.id ? (<Loader2 className='h-4 w-4 animate-spin' />
+                {/* {currentlyDeletingFile === file.id ? (<Loader2 className='h-4 w-4 animate-spin' />
                 ) : (
-                )}
+                )} */}
               </Button>
             </div>
           </li>
